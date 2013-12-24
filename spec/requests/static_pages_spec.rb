@@ -1,6 +1,23 @@
 require 'spec_helper'
 
 describe "Static pages" do
+  describe "Contact page" do
+    it "should have the title 'Contact Us'" do
+      visit "/static_pages/contact"
+      page.should have_selector('title', :text => 'Contact Us')
+    end
+
+    it "should have a header that says 'Contact Us'" do
+      visit "/static_pages/contact"
+      page.should have_selector('h1', :text => 'Contact Us')
+    end
+
+    it "should have the content 'my email is joe@schmo.com'" do
+      visit "/static_pages/contact"
+      page.should have_content('joe@schmo.com')
+    end
+
+  end
 
   describe "Home page" do
 
