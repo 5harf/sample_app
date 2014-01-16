@@ -27,7 +27,14 @@ describe User do
 
 	it {should be_valid}
 
-
+	describe "email should be downcased" do
+		let(:email_downcase) {'fOed@asdf.com'}
+		it "should be saved as all lower case" do 
+			@user.email = email_downcase
+			@user.save
+			@user.reload.email.should == email_downcase.downcase
+		end
+	end
 
 	describe "when password is not present" do
 		before {@user.password = @user.password_confirmation = " "}
